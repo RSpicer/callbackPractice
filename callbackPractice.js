@@ -108,6 +108,18 @@ contains(names, 'Colt', function(result){
     //Code Here for uniq
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var uniq = function(arr, cb){
+  for (var i = 0; i < arr.length; i++){
+    for (var x = 0; x < arr.length; x++){
+      if (i !== x && arr[i] === arr[x]){
+        arr.splice(x, 1);
+      }
+    }
+  }
+  cb(arr);
+}
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -124,6 +136,14 @@ uniq(names, function(uniqArr){
     //Code Here for each
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var each = function(arr, cb) {
+  for (var i = 0; i < arr.length; i++)
+  {
+    cb(arr[i], i);
+  }
+}
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
@@ -160,6 +180,16 @@ var users = [
     address: '192 East 32 North'
   },
 ];
+
+var getUserById = function(arr, id, cb){
+  debugger;
+  for(var i = 0; i < arr.length; i++){
+    if ((arr[i])["id"] === id)
+    {
+      cb(arr[i]);
+    }
+  }
+}
 
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
